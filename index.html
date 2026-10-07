@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan 3D - Elegant & Romantic</title>
+    <style>
+        /* ===== RESET & GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2a1f1a 0%, #1a1210 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 50px 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+            perspective: 1500px;
+        }
+
+        /* ===== VARIABEL WARNA ===== */
+        :root {
+            --rose: #c9a5a0;
+            --rose-dark: #a67c76;
+            --rose-light: #e8d5d2;
+            --sage: #9caf88;
+            --sage-dark: #6b7d5a;
+            --gold: #c9a961;
+            --gold-light: #e8d5a3;
+            --ivory: #faf6f0;
+            --ivory-dark: #f0e8dc;
+            --brown: #5c4033;
+            --text-dark: #3d2b24;
+            --text-soft: #7a6459;
+            --white: #ffffff;
+        }
+
+        /* ===== CONTAINER BROSUR 3D ===== */
+        .brochure-3d {
+            width: 320px;
+            height: 540px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .brochure-3d:hover {
+            transform: rotateY(-8deg) rotateX(5deg) translateY(-10px);
+        }
+
+        .brochure-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--ivory);
+            border-radius: 10px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(201, 169, 97, 0.4),
+                inset 0 0 40px rgba(201, 169, 97, 0.05);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        /* Efek 3D shadow di belakang */
+        .brochure-3d::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: -15px;
+            bottom: -15px;
+            background: rgba(201, 169, 97, 0.15);
+            border-radius: 10px;
+            z-index: -1;
+            filter: blur(15px);
+            transition: all 0.8s ease;
+        }
+
+        .brochure-3d:hover::before {
+            top: 25px;
+            left: 25px;
+            right: -25px;
+            bottom: -25px;
+            background: rgba(201, 169, 97, 0.3);
+            filter: blur(25px);
+        }
+
+        /* ===== TIPOGRAFI ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            line-height: 1.7;
+            color: var(--text-soft);
+        }
+
+        /* ===== ORNAMEN FLORAL ===== */
+        .floral-corner {
+            position: absolute;
+            font-size: 30px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .floral-corner.top-left { top: 8px; left: 8px; }
+        .floral-corner.top-right { top: 8px; right: 8px; transform: scaleX(-1); }
+        .floral-corner.bottom-left { bottom: 8px; left: 8px; transform: scaleY(-1); }
+        .floral-corner.bottom-right { bottom: 8px; right: 8px; transform: scale(-1); }
+
+        .divider-floral {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .divider-floral .line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .divider-floral .flower {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           LAYOUT 1 - "ROSE GARDEN" (Kiri)
+           Tema: Romantis & Floral
+           ============================================ */
+        .layout-1 .brochure-inner {
+            background: linear-gradient(180deg, var(--ivory) 0%, var(--rose-light) 100%);
+        }
+
+        .layout-1 .header {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px double var(--gold);
+        }
+
+        .layout-1 .header::before {
+            content: '❀';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 60px;
+            color: var(--white);
+            opacity: 0.15;
+        }
+
+        .layout-1 .header::after {
+            content: '❀';
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            font-size: 60px;
+            color: var(--white);
+            opacity: 0.15;
+            transform: rotate(180deg);
+        }
+
+        .layout-1 .header .rings {
+            font-size: 28px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+        }
+
+        .layout-1 .header .subtitle {
+            font-size: 9px;
+            color: var(--ivory);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 8px;
+        }
+
+        .layout-1 .header h1 {
+            font-size: 26px;
+            color: var(--white);
+            line-height: 1.1;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .layout-1 .header h1 span {
+            display: block;
+            font-size: 14px;
+            color: var(--gold-light);
+            font-style: normal;
+            margin: 5px 0;
+            letter-spacing: 3px;
+        }
+
+        .layout-1 .header .date {
+            font-size: 11px;
+            color: var(--ivory);
+            letter-spacing: 3px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .layout-1 .content {
+            padding: 20px;
+            text-align: center;
+            height: calc(100% - 200px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-1 .content .couple-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-light), var(--ivory));
+            border: 3px solid var(--gold);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 20px rgba(201, 165, 160, 0.4);
+            position: relative;
+        }
+
+        .layout-1 .content .couple-photo::after {
+            content: '💍';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            font-size: 20px;
+            background: var(--white);
+            border-radius: 50%;
+            padding: 3px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .layout-1 .content h3 {
+            font-size: 16px;
+            color: var(--rose-dark);
+            font-style: italic;
+            margin-bottom: 3px;
+        }
+
+        .layout-1 .content .ampersand {
+            font-size: 24px;
+            color: var(--gold);
+            font-style: italic;
+            margin: 5px 0;
+        }
+
+        .layout-1 .content p {
+            font-size: 10px;
+            color: var(--text-soft);
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .layout-1 .content .venue {
+            background: var(--ivory);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .layout-1 .content .venue h4 {
+            font-size: 10px;
+            color: var(--rose-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .layout-1 .content .venue p {
+            font-size: 9px;
+            margin: 2px 0;
+            font-style: normal;
+        }
+
+        .layout-1 .footer {
+            background: var(--rose-dark);
+            padding: 12px;
+            text-align: center;
+            border-top: 3px double var(--gold);
+        }
+
+        .layout-1 .footer p {
+            color: var(--ivory);
+            font-size: 9px;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        /* ============================================
+           LAYOUT 2 - "SAGE ELEGANCE" (Tengah Kiri)
+           Tema: Natural & Elegan
+           ============================================ */
+        .layout-2 .brochure-inner {
+            background: var(--ivory);
+        }
+
+        .layout-2 .top-bar {
+            background: var(--sage-dark);
+            padding: 8px 20px;
+            text-align: center;
+        }
+
+        .layout-2 .top-bar p {
+            font-size: 8px;
+            color: var(--ivory);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .layout-2 .header {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--sage) 0%, var(--sage-dark) 100%);
+            position: relative;
+        }
+
+        .layout-2 .header .monogram {
+            width: 55px;
+            height: 55px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--gold);
+            font-style: italic;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .layout-2 .header h1 {
+            font-size: 24px;
+            color: var(--white);
+            line-height: 1.1;
+            font-style: italic;
+        }
+
+        .layout-2 .header .date-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--sage-dark);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .layout-2 .main-content {
+            padding: 20px;
+        }
+
+        .layout-2 .main-content .verse {
+            text-align: center;
+            font-style: italic;
+            font-size: 10px;
+            color: var(--text-soft);
+            line-height: 1.6;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .layout-2 .main-content .verse .quote {
+            font-size: 20px;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .layout-2 .main-content .couple-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .layout-2 .main-content .couple-section .person {
+            text-align: center;
+            width: 40%;
+        }
+
+        .layout-2 .main-content .couple-section .person .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(107, 125, 90, 0.3);
+        }
+
+        .layout-2 .main-content .couple-section .person h4 {
+            font-size: 11px;
+            color: var(--sage-dark);
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+
+        .layout-2 .main-content .couple-section .person p {
+            font-size: 8px;
+            color: var(--text-soft);
+        }
+
+        .layout-2 .main-content .couple-section .heart-divider {
+            font-size: 18px;
+            color: var(--rose);
+        }
+
+        .layout-2 .main-content .event-details {
+            background: var(--ivory-dark);
+            border-radius: 8px;
+            padding: 12px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .layout-2 .main-content .event-details .event-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--rose-light);
+        }
+
+        .layout-2 .main-content .event-details .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .layout-2 .main-content .event-details .event-item .icon {
+            font-size: 16px;
+        }
+
+        .layout-2 .main-content .event-details .event-item .text h5 {
+            font-size: 10px;
+            color: var(--sage-dark);
+            font-style: italic;
+        }
+
+        .layout-2 .main-content .event-details .event-item .text p {
+            font-size: 8px;
+            color: var(--text-soft);
+        }
+
+        .layout-2 .footer {
+            background: var(--sage-dark);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .layout-2 .footer p {
+            color: var(--ivory);
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+        /* ============================================
+           LAYOUT 3 - "GOLDEN ROMANCE" (Tengah Kanan)
+           Tema: Mewah & Berkilau
+           ============================================ */
+        .layout-3 .brochure-inner {
+            background: linear-gradient(180deg, var(--ivory) 0%, var(--gold-light) 100%);
+        }
+
+        .layout-3 .header {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--rose-dark) 100%);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layout-3 .header::before {
+            content: '✦';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 20px;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .layout-3 .header::after {
+            content: '✦';
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 20px;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .layout-3 .header .crown-icon {
+            font-size: 26px;
+            color: var(--ivory);
+            margin-bottom: 5px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .layout-3 .header h1 {
+            font-size: 24px;
+            color: var(--white);
+            line-height: 1.2;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .layout-3 .header .subtitle {
+            font-size: 9px;
+            color: var(--ivory);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .layout-3 .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .layout-3 .main-content .rings-display {
+            display: flex;
+            justify-content: center;
+            gap: -10px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .layout-3 .main-content .rings-display .ring {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: var(--ivory);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.4);
+        }
+
+        .layout-3 .main-content .rings-display .ring:first-child {
+            margin-right: -15px;
+            z-index: 2;
+        }
+
+        .layout-3 .main-content .rings-display .ring:last-child {
+            margin-left: -15px;
+            z-index: 1;
+        }
+
+        .layout-3 .main-content .names {
+            margin: 15px 0;
+        }
+
+        .layout-3 .main-content .names h2 {
+            font-size: 20px;
+            color: var(--rose-dark);
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .layout-3 .main-content .names .amp {
+            font-size: 28px;
+            color: var(--gold);
+            font-style: italic;
+            margin: 5px 0;
+        }
+
+        .layout-3 .main-content .date-section {
+            background: var(--ivory);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .layout-3 .main-content .date-section::before,
+        .layout-3 .main-content .date-section::after {
+            content: '❦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: var(--gold);
+        }
+
+        .layout-3 .main-content .date-section::before { left: 8px; }
+        .layout-3 .main-content .date-section::after { right: 8px; }
+
+        .layout-3 .main-content .date-section .day {
+            font-size: 10px;
+            color: var(--text-soft);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .layout-3 .main-content .date-section .date {
+            font-size: 22px;
+            color: var(--rose-dark);
+            font-weight: 700;
+            font-style: italic;
+            margin: 3px 0;
+        }
+
+        .layout-3 .main-content .location {
+            font-size: 9px;
+            color: var(--text-soft);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .layout-3 .footer {
+            background: var(--rose-dark);
+            padding: 10px;
+            text-align: center;
+            border-top: 3px double var(--gold);
+        }
+
+        .layout-3 .footer p {
+            color: var(--ivory);
+            font-size: 8px;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        /* ============================================
+           LAYOUT 4 - "IVORY DREAM" (Kanan)
+           Tema: Minimalis & Elegan
+           ============================================ */
+        .layout-4 .brochure-inner {
+            background: var(--ivory);
+        }
+
+        .layout-4 .border-frame {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .layout-4 .border-frame::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid var(--rose-light);
+            border-radius: 4px;
+        }
+
+        .layout-4 .header {
+            padding: 30px 20px 15px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .layout-4 .header .floral-top {
+            font-size: 24px;
+            color: var(--rose);
+            margin-bottom: 8px;
+        }
+
+        .layout-4 .header h1 {
+            font-size: 22px;
+            color: var(--text-dark);
+            line-height: 1.2;
+            font-style: italic;
+        }
+
+        .layout-4 .header .subtitle {
+            font-size: 9px;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .layout-4 .main-content {
+            padding: 15px 25px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .layout-4 .main-content .photo-frame {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-light), var(--ivory-dark));
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(201, 165, 160, 0.3);
+        }
+
+        .layout-4 .main-content .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px dashed var(--rose);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .layout-4 .main-content .couple-names {
+            margin-bottom: 12px;
+        }
+
+        .layout-4 .main-content .couple-names h3 {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+
+        .layout-4 .main-content .couple-names .and {
+            font-size: 18px;
+            color: var(--gold);
+            font-style: italic;
+            margin: 3px 0;
+        }
+
+        .layout-4 .main-content .invitation-text {
+            font-size: 9px;
+            color: var(--text-soft);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding: 0 5px;
+        }
+
+        .layout-4 .main-content .event-info {
+            background: var(--ivory-dark);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid var(--rose-light);
+        }
+
+        .layout-4 .main-content .event-info .row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            border-bottom: 1px dashed var(--rose-light);
+        }
+
+        .layout-4 .main-content .event-info .row:last-child {
+            border-bottom: none;
+        }
+
+        .layout-4 .main-content .event-info .row .icon {
+            font-size: 14px;
+        }
+
+        .layout-4 .main-content .event-info .row .text {
+            text-align: left;
+        }
+
+        .layout-4 .main-content .event-info .row .text h5 {
+            font-size: 9px;
+            color: var(--rose-dark);
+            font-style: italic;
+        }
+
+        .layout-4 .main-content .event-info .row .text p {
+            font-size: 8px;
+            color: var(--text-soft);
+        }
+
+        .layout-4 .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .layout-4 .footer p {
+            font-size: 8px;
+            color: var(--text-soft);
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        /* ===== ANIMASI ===== */
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.1); }
+        }
+
+        .float-heart {
+            animation: floatHeart 2.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1500px) {
+            body {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LAYOUT 1 - ROSE GARDEN
+         ============================================ -->
+    <div class="brochure-3d" onclick="bukaUndangan('Andi & Sari', '15 Juni 2024', 'Grand Ballroom Padang')">
+        <div class="brochure-inner layout-1">
+            <div class="header">
+                <div class="rings float-heart">💍</div>
+                <div class="subtitle">The Wedding Of</div>
+                <h1>Andi & Sari<span>✦ ✦ ✦</span></h1>
+                <div class="date">15 . 06 . 2024</div>
+            </div>
+            <div class="content">
+                <div class="couple-photo">💑</div>
+                <h3>Andi Pratama</h3>
+                <div class="ampersand">&</div>
+                <h3>Sari Dewi</h3>
+                <p>"Dengan memohon rahmat Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami."</p>
+                <div class="venue">
+                    <h4>Resepsi</h4>
+                    <p>Grand Ballroom Hotel Padang</p>
+                    <p>Jl. Sudirman No. 88, Padang</p>
+                    <p>Pukul 19.00 WIB</p>
+                </div>
+            </div>
+            <div class="footer">
+                <p>❦ Merupakan suatu kehormatan & kebahagiaan ❦</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         LAYOUT 2 - SAGE ELEGANCE
+         ============================================ -->
+    <div class="brochure-3d" onclick="bukaUndangan('Rizki & Maya', '22 Juli 2024', 'Padang Convention Center')">
+        <div class="brochure-inner layout-2">
+            <div class="top-bar">
+                <p>✦ Undangan Pernikahan ✦</p>
+            </div>
+            <div class="header">
+                <div class="monogram">R&M</div>
+                <h1>Rizki & Maya</h1>
+                <div class="date-badge">22 JULI 2024</div>
+            </div>
+            <div class="main-content">
+                <div class="verse">
+                    <span class="quote">"</span>
+                    Dan di antara tanda-tanda kekuasaan-Nya, Dia menciptakan untukmu pasangan dari jenismu sendiri...
+                    <span class="quote">"</span>
+                </div>
+                <div class="couple-section">
+                    <div class="person">
+                        <div class="avatar">🤵</div>
+                        <h4>Rizki</h4>
+                        <p>Putra Bpk. Ahmad</p>
+                    </div>
+                    <div class="heart-divider float-heart">❤</div>
+                    <div class="person">
+                        <div class="avatar">👰</div>
+                        <h4>Maya</h4>
+                        <p>Putri Bpk. Hasan</p>
+                    </div>
+                </div>
+                <div class="event-details">
+                    <div class="event-item">
+                        <div class="icon">📅</div>
+                        <div class="text">
+                            <h5>Akad Nikah</h5>
+                            <p>22 Juli 2024, 09.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="icon">🎉</div>
+                        <div class="text">
+                            <h5>Resepsi</h5>
+                            <p>22 Juli 2024, 11.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="icon">📍</div>
+                        <div class="text">
+                            <h5>Lokasi</h5>
+                            <p>Padang Convention Center</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>❦ Terima kasih atas doa & restunya ❦</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         LAYOUT 3 - GOLDEN ROMANCE
+         ============================================ -->
+    <div class="brochure-3d" onclick="bukaUndangan('Bagas & Rina', '10 Agustus 2024', 'Padang Grand Hotel')">
+        <div class="brochure-inner layout-3">
+            <div class="header">
+                <div class="crown-icon sparkle">♛</div>
+                <h1>Bagas & Rina</h1>
+                <div class="subtitle">Royal Wedding</div>
+            </div>
+            <div class="main-content">
+                <div class="rings-display">
+                    <div class="ring">💍</div>
+                    <div class="ring">💍</div>
+                </div>
+                <div class="names">
+                    <h2>Bagas Saputra</h2>
+                    <div class="amp">&</div>
+                    <h2>Rina Anggraini</h2>
+                </div>
+                <div class="date-section">
+                    <div class="day">Sabtu</div>
+                    <div class="date">10 Agustus 2024</div>
+                    <div class="day">Pukul 10.00 WIB</div>
+                </div>
+                <div class="location">
+                    📍 Padang Grand Hotel<br>
+                    Jl. Imam Bonjol No. 45, Padang
+                </div>
+            </div>
+            <div class="footer">
+                <p>❦ With Love & Blessing ❦</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         LAYOUT 4 - IVORY DREAM
+         ============================================ -->
+    <div class="brochure-3d" onclick="bukaUndangan('Fajar & Nadia', '5 September 2024', 'Padang Theater')">
+        <div class="brochure-inner layout-4">
+            <div class="border-frame"></div>
+            <div class="header">
+                <div class="floral-top">❀ ❀ ❀</div>
+                <h1>Fajar & Nadia</h1>
+                <div class="subtitle">We Are Getting Married</div>
+            </div>
+            <div class="main-content">
+                <div class="photo-frame">💑</div>
+                <div class="couple-names">
+                    <h3>Fajar Ramadhan</h3>
+                    <div class="and">&</div>
+                    <h3>Nadia Safitri</h3>
+                </div>
+                <p class="invitation-text">
+                    Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami.
+                </p>
+                <div class="event-info">
+                    <div class="row">
+                        <div class="icon">📅</div>
+                        <div class="text">
+                            <h5>Hari/Tanggal</h5>
+                            <p>Kamis, 5 September 2024</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="icon">⏰</div>
+                        <div class="text">
+                            <h5>Waktu</h5>
+                            <p>10.00 WIB - Selesai</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="icon">📍</div>
+                        <div class="text">
+                            <h5>Tempat</h5>
+                            <p>Padang Theater, Jl. Veteran No. 10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>❦ Merupakan kebahagiaan bagi kami ❦</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function bukaUndangan(pasangan, tanggal, lokasi) {
+            alert(
+                '💌 UNDANGAN PERNIKAHAN 💌\n\n' +
+                '👰🤵 ' + pasangan + '\n' +
+                '📅 ' + tanggal + '\n' +
+                '📍 ' + lokasi + '\n\n' +
+                'Merupakan suatu kehormatan dan kebahagiaan bagi kami\n' +
+                'apabila Bapak/Ibu/Saudara/i berkenan hadir\n' +
+                'untuk memberikan doa restu.\n\n' +
+                'Terima kasih ❤️'
+            );
+        }
+
+        // Animasi masuk 3D saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            const brochures = document.querySelectorAll('.brochure-3d');
+            brochures.forEach((brochure, index) => {
+                brochure.style.opacity = '0';
+                brochure.style.transform = 'translateY(50px) rotateY(-30deg) scale(0.8)';
+                setTimeout(() => {
+                    brochure.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    brochure.style.opacity = '1';
+                    brochure.style.transform = 'translateY(0) rotateY(0) scale(1)';
+                }, index * 250);
+            });
+
+            // Efek parallax 3D saat mouse bergerak
+            brochures.forEach(brochure => {
+                brochure.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateY = ((x - centerX) / centerX) * 10;
+                    const rotateX = ((centerY - y) / centerY) * 10;
+                    
+                    this.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-10px) scale(1.02)`;
+                });
+
+                brochure.addEventListener('mouseleave', function() {
+                    this.style.transform = 'rotateY(0) rotateX(0) translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
